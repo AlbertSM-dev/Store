@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Store</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="script.js"></script>
+    <script>
+      function loadTemplate(id, file) {
+        fetch(file)
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById(id).innerHTML = data;
+          });
+      }
+    </script>
+  </head>
+    <div id="header"></div>
+    <script>
+      loadTemplate('header', 'header.html');
+    </script>
+    <h2>About Us</h2>
+    <div class="container_contact">
+      <main>
+        <section class="about">
+          <p>
+            Welcome to our Retro Game Store, where nostalgia meets modern
+            convenience! We specialize in classic video games and consoles,
+            offering a curated selection of timeless favorites from the golden
+            age of gaming.
+          </p>
+          <p>
+            Whether you're a seasoned gamer looking to relive the magic of your
+            childhood or a newcomer eager to explore the roots of gaming
+            history, our store has something for everyone.
+          </p>
+        </section>
+      </main>
+    </div>
+    <div id="footer"></div>
+    <script>
+      loadTemplate('footer', 'footer.html');
+    </script>
+    <script>
+      function toggleMenu() {
+        var menu = document.querySelector('.menu');
+        menu.classList.toggle('active');
+      }
+    </script>
+
