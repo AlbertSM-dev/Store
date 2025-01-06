@@ -1,3 +1,3 @@
-# Retro-Game-Store
+# Store
 
 [Edit in StackBlitz next generation editor ⚡️](https://stackblitz.com/~/github.com/AlbertSM-dev/Retro-Game-Store)
