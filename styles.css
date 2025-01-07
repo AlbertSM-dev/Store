@@ -264,3 +264,29 @@ button:hover {
   padding: 2px 6px;
   font-size: 12px;
 }
+.container_cart {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart {
+  margin-top: 20px;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.total {
+  text-align: right;
+  padding: 10px;
+  font-weight: bold;
+}

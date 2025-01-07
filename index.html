@@ -12,6 +12,7 @@
           .then((response) => response.text())
           .then((data) => {
             document.getElementById(id).innerHTML = data;
+            updateCartCounter();
           });
       }
     </script>
@@ -21,7 +22,6 @@
       loadTemplate('header', 'header.html');
     </script>
     <div class="container">
-    <h1>Shopping Cart</h1> <div id="cart"></div> <h2>Total: $<span id="total">0</span></h2>
       <div class="image-section">
         <img src="images/store-back.png" alt="Back" />
       </div>

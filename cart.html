@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Game Store</title>
     <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
+    <script src="script.js" defer></script>
     <script>
       function loadTemplate(id, file) {
         fetch(file)
           .then((response) => response.text())
           .then((data) => {
             document.getElementById(id).innerHTML = data;
+            updateCartCounter();
           });
       }
     </script>
@@ -21,16 +22,21 @@
       loadTemplate('header', 'header.html');
     </script>
     <h2>Contact Us</h2>
-    <div class="container_contact">
-      <form action="submit_form.php" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required />
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-        <button type="submit">Submit</button>
-      </form>
+    <div class="container_cart">
+      <h1>Shopping Cart</h1> 
+      <div class="cart"> 
+        <div class="cart-header"> 
+          <span>Item</span> 
+          <span>Quantity</span> 
+          <span>Action</span> 
+        </div> <div id="cart"></div> 
+        <div class="total"> Total: $
+          <span id="total">0</span> 
+        </div> 
+        <div> Items in Cart: 
+          <span id="cart-counter">0</span> 
+        </div> 
+      </div>
     </div>
     <div id="footer"></div>
     <script>

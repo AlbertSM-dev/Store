@@ -1,54 +1,72 @@
-let cart = [];
+// script.js
 
-function addToCart(id) {
-  const product = document.querySelector(`.product[data-id="${id}"]`);
-  if (!product) {
-    console.error(`Product with data-id ${id} not found`);
-    return;
-  }
-  const productName = product.querySelector('span').textContent;
-  const cartItem = cart.find((item) => item.id === id);
+// script.js
 
-  if (cartItem) {
-    cartItem.quantity++;
-  } else {
-    cart.push({ id, name: productName, quantity: 1 });
-  }
+window.cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  updateCart();
-  updateCartCounter();
-}
+window.addToCart = function(id) {
+    const product = document.querySelector(`.product[data-id="${id}"]`);
+    if (!product) {
+        console.error(`Product with data-id ${id} not found`);
+        return;
+    }
+    const productName = product.querySelector('span').textContent;
+    const cartItem = cart.find((item) => item.id === id);
 
-function removeFromCart(id) {
-  cart = cart.filter((item) => item.id !== id);
-  updateCart();
-  updateCartCounter();
-}
+    if (cartItem) {
+        cartItem.quantity++;
+    } else {
+        cart.push({ id, name: productName, quantity: 1 });
+    }
 
-function updateCart() {
-  const cartElement = document.getElementById('cart');
-  cartElement.innerHTML = '';
+    updateCart();
+    updateCartCounter();
+    localStorage.setItem('cart', JSON.stringify(cart));
+};
 
-  cart.forEach((item) => {
-    const cartItemElement = document.createElement('div');
-    cartItemElement.className = 'cart-item';
-    cartItemElement.innerHTML = `
-                  <span>${item.name} (x${item.quantity})</span>
-                  <button onclick="removeFromCart(${item.id})">Remove</button>
-              `;
-    cartElement.appendChild(cartItemElement);
-  });
+window.removeFromCart = function(id) {
+    cart = cart.filter((item) => item.id !== id);
+    updateCart();
+    updateCartCounter();
+    localStorage.setItem('cart', JSON.stringify(cart));
+};
 
-  updateTotal();
-}
+window.updateCart = function() {
+    const cartElement = document.getElementById('cart');
+    if (cartElement) {
+        cartElement.innerHTML = '';
 
-function updateTotal() {
-  const total = cart.reduce((sum, item) => sum + item.quantity * 10, 0); // Assuming each item costs $10
-  document.getElementById('total').textContent = total;
-}
+        cart.forEach((item) => {
+            const cartItemElement = document.createElement('div');
+            cartItemElement.className = 'cart-item';
+            cartItemElement.innerHTML = `
+                <span>${item.name} (x${item.quantity})</span>
+                <button onclick="removeFromCart(${item.id})">Remove</button>
+            `;
+            cartElement.appendChild(cartItemElement);
+        });
 
-function updateCartCounter() {
-  const cartCounter = document.getElementById('cart-counter');
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  cartCounter.textContent = totalItems;
-}
+        updateTotal();
+    }
+};
+
+window.updateTotal = function() {
+    const total = cart.reduce((sum, item) => sum + item.quantity * 10, 0); // Assuming each item costs $10
+    const totalElement = document.getElementById('total');
+    if (totalElement) {
+        totalElement.textContent = total;
+    }
+};
+
+window.updateCartCounter = function() {
+    const cartCounter = document.getElementById('cart-counter');
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    if (cartCounter) {
+        cartCounter.textContent = totalItems;
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateCart();
+    updateCartCounter();
+});
