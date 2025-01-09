@@ -93,6 +93,8 @@ nav ul li a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  height: 400px;
+  overflow-y: scroll;
 }
 .image-section {
   flex: 1 1 100%; /* Adjust width to fit three containers in a row */

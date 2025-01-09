@@ -20,9 +20,9 @@
     <script>
       loadTemplate('header', 'header.html');
     </script>
-    <h2>About Us</h2>
     <div class="container_contact">
       <main>
+        <h2>About Us</h2>
         <section class="about">
           <p>
             Welcome to our Retro Game Store, where nostalgia meets modern
@@ -35,8 +35,13 @@
             childhood or a newcomer eager to explore the roots of gaming
             history, our store has something for everyone.
           </p>
+          <h3>Opening Hours</h3> 
+          <p>Monday - Friday: 10:00 AM - 8:00 PM</p> 
+          <p>Saturday: 10:00 AM - 6:00 PM</p> 
+          <p>Sunday: Closed</p>
         </section>
-        <section class="contact">
+        <section class="contact">   
+          <h2>Contact Us</h2>       
           <form action="submit_form.php" method="post">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required />
@@ -47,7 +52,6 @@
             <button type="submit">Submit</button>
           </form>
         </section>
-      </section>
       </main>
     </div>
     <div id="footer"></div>
