@@ -25,15 +25,16 @@
         <h2>About Us</h2>
         <section class="about">
           <p>
-            Welcome to our Retro Game Store, where nostalgia meets modern
-            convenience! We specialize in classic video games and consoles,
-            offering a curated selection of timeless favorites from the golden
-            age of gaming.
+            Welcome to Book Store, your sanctuary for all things literary! 
+            Nestled in the heart of Madrid, 
+            we are more than just a bookstore; 
+            we are a community of book lovers, dreamers, and seekers of knowledge..
           </p>
           <p>
-            Whether you're a seasoned gamer looking to relive the magic of your
-            childhood or a newcomer eager to explore the roots of gaming
-            history, our store has something for everyone.
+            Founded in 2005 by a group of passionate readers, 
+            Book Haven was born out of a love for the written word and a desire to create a space where people could come together to share their love of books. 
+            Over the years, we have grown from a small, cozy shop to a bustling hub of literary activity, but our mission remains the same: 
+            to inspire and nurture a love of reading in everyone who walks through our doors.
           </p>
           <h3>Opening Hours</h3> 
           <p>Monday - Friday: 10:00 AM - 8:00 PM</p> 
@@ -42,7 +43,7 @@
         </section>
         <section class="contact">   
           <h2>Contact Us</h2>       
-          <form action="submit_form.php" method="post">
+          <form id="contactForm">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required />
             <label for="email">Email:</label>
@@ -63,5 +64,14 @@
         var menu = document.querySelector('.menu');
         menu.classList.toggle('active');
       }
+      document.getElementById('contactForm').addEventListener('submit', function(event) { 
+        event.preventDefault(); 
+        const name = document.getElementById('name').value; 
+        const email = document.getElementById('email').value; 
+        const message = document.getElementById('message').value; 
+        alert(`Email sent!\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`);  
+        document.getElementById('contactForm').reset(); 
+      });
     </script>
+    
 
